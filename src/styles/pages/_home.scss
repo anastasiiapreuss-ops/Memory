@@ -1,0 +1,43 @@
+// -----------------------------------------------------------------------------
+// Homescreen
+// Textblock und Play-Button gemeinsam mittig auf der dunklen Buehne
+// (horizontal und vertikal zentriert). Innerhalb des Textblocks steht
+// "It's play time." linksbündig über "Ready to play?".
+// -----------------------------------------------------------------------------
+
+@use "../abstracts" as *;
+
+.home {
+    position: relative;
+    z-index: 1; // Inhalt liegt über dem Gamepad-Wasserzeichen
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem clamp(1.25rem, 6vw, 5rem);
+    color: $color-text-on-dark;
+}
+
+.home__heading {
+    max-width: 100%;
+    text-align: left; // Kicker linksbündig an der Titel-Kante
+}
+
+.home__kicker {
+    margin: 0 0 0.5rem;
+    font-size: clamp(1.1rem, 0.85rem + 0.7vw, 1.45rem);
+    font-weight: 400;
+}
+
+.home__title {
+    margin: 0;
+    font-size: clamp(3rem, 2rem + 6vw, 6rem);
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+}
+
+.home__cta {
+    margin-top: 2.25rem;
+}

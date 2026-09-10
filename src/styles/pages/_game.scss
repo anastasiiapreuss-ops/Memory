@@ -1,0 +1,430 @@
+// -----------------------------------------------------------------------------
+// Game-Screen (Vorlagen: Screenshots "Code vibes theme 16/24" und
+// "Games theme 16/24/36"). Statisches Board + Header.
+// Code vibes und Gaming haben BEWUSST unterschiedliche Header-Strukturen:
+//   - Code vibes: Elemente direkt auf der dunklen Flaeche, Score in einer
+//     slate-/anthrazitfarbenen Sektion, dunkler Exit-Button.
+//   - Gaming: eigenes helleres Band um den Header, weisse Score-Pille,
+//     "Current player"-Icon in hellem Badge, pinker Exit-Button.
+// Theme / aktive Spieler / Board-Groesse kommen per data-Attribut aus main.ts.
+// Noch KEINE Flip-/Match-/Game-over-Logik.
+// -----------------------------------------------------------------------------
+
+@use "../abstracts" as *;
+
+.game {
+    position: relative; // Anker fuer das Quit-Popup
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    color: $color-text-on-dark;
+    background-color: $color-stage-bg; // Code vibes: Anthrazit
+
+    &[data-theme="gaming"] {
+        background-color: #294f60; // Petrol (= Settings-Gaming-Farbe 1)
+    }
+}
+
+.game__inner {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 52rem;
+    margin-inline: auto;
+    padding: clamp(1rem, 3vw, 2rem) clamp(1rem, 4vw, 3rem);
+}
+
+// --- Header: Grundgeruest (3 Spalten, Current player mittig) -----------
+.game-bar {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 0.9rem;
+    margin-bottom: clamp(1.5rem, 4vw, 2.75rem);
+}
+
+// Code vibes: KEIN Band um den gesamten Header – der Hintergrund sitzt nur
+// hinter dem Score/Player (siehe .score unten).
+
+// Gaming: eigenes Band um den Header (Vorlage: Frame 610 (2).svg) – pink
+// getoent, gerundet.
+.game[data-theme="gaming"] .game-bar {
+    padding: 0.65rem 1.05rem;
+    border-radius: 10px;
+    background-color: rgba(253, 150, 201, 0.2);
+}
+
+// --- Score-Sektion ---------------------------------------------------
+.score {
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.5rem 0.9rem;
+    border-radius: 8px;
+    font-size: 1.4rem; // Header deutlich groesser
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+// Code vibes: langer, eckiger Balken – nur hinter Score/Player, nicht rundlich,
+// etwas hoeher als Standard.
+.game[data-theme="code-vibes"] .score {
+    padding-block: 0.65rem;
+    border-radius: 0;
+    background-color: rgba(134, 233, 214, 0.2);
+    color: $color-text-on-dark;
+}
+
+// Gaming: weisse, staerker gerundete Pille.
+.game[data-theme="gaming"] .score {
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.score__chip {
+    display: none; // nur die tatsaechlich aktiven Spieler
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.game[data-players~="blue"] .score__chip--blue,
+.game[data-players~="orange"] .score__chip--orange {
+    display: inline-flex;
+}
+
+.score__chip--blue {
+    color: #2bb1ff;
+}
+
+.score__chip--orange {
+    color: #f58e39;
+}
+
+// Gaming: Icon + Zahl in der Spielerfarbe (Frame 610 (2).svg), kein Wort.
+.game[data-theme="gaming"] .score__chip--blue {
+    color: #097fc5;
+}
+
+.game[data-theme="gaming"] .score__chip--orange {
+    color: #ea6900;
+}
+
+.game[data-theme="gaming"] .score__name {
+    display: none;
+}
+
+// --- Current player ------------------------------------------------
+.game-bar__turn {
+    justify-self: center;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin: 0;
+    font-size: 1.3rem; // Text etwas kleiner als Score
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+// Das "Current player"-Icon behaelt seine Groesse (unabhaengig vom Text).
+.game-bar__turn .player-icon__glyph {
+    height: 1.5rem;
+}
+
+.game[data-theme="gaming"] .game-bar__turn {
+    font-weight: 700;
+}
+
+// Gaming: aktives Spieler-Icon weiss in farbigem Badge (Frame 610 (2).svg).
+.game[data-theme="gaming"] .current-player-icon {
+    padding: 0.2rem 0.42rem;
+    border-radius: 3px;
+    color: #ffffff;
+}
+
+.game[data-theme="gaming"] .current-player-icon.is-blue {
+    background-color: #1faafc;
+}
+
+.game[data-theme="gaming"] .current-player-icon.is-orange {
+    background-color: #f5871f;
+}
+
+.button--exit {
+    justify-self: end;
+}
+
+// --- Spieler-Icons (Faehnchen = Code vibes, Spielfigur = Gaming) ----
+.player-icon {
+    display: inline-flex;
+    line-height: 0;
+}
+
+.player-icon--blue {
+    color: #2bb1ff;
+}
+
+.player-icon--orange {
+    color: #f58e39;
+}
+
+.player-icon__glyph {
+    display: block;
+    width: auto;
+    height: 1em;
+}
+
+// Code vibes -> Faehnchen; Gaming -> Schach-Figur (aus Settings "Choose player")
+.player-icon__glyph--pawn {
+    display: none;
+}
+
+.game[data-theme="gaming"] .player-icon__glyph--flag {
+    display: none;
+}
+
+.game[data-theme="gaming"] .player-icon__glyph--pawn {
+    display: block;
+}
+
+// aktiver Spieler – Farbe wird von main.ts per Klasse gesetzt
+.current-player-icon.is-blue {
+    color: #2bb1ff;
+}
+
+.current-player-icon.is-orange {
+    color: #f58e39;
+}
+
+// --- Board -------------------------------------------------------
+// Code vibes: bestehende Abstaende/Anordnung NICHT veraendern.
+.board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); // 16 Karten -> 4 Spalten
+    gap: clamp(6px, 1.4vw, 12px);
+    width: 100%;
+    max-width: 27rem;
+    margin-inline: auto;
+
+    .game[data-board="24"] &,
+    .game[data-board="36"] & {
+        grid-template-columns: repeat(6, 1fr); // 24 & 36 -> 6 Spalten
+        max-width: 40rem;
+    }
+}
+
+// Gaming-Board nutzt dieselben Abstaende/Groessen wie Code vibes.
+
+.card {
+    position: relative; // Anker fuer die deckungsgleiche Vorderseite
+    aspect-ratio: 1 / 1; // Code vibes: quadratisch
+    background: center / contain no-repeat url("/assets/Property%201=Component%2021.svg");
+
+    // Gaming: die Rueckseite (Property 1=Component 1.svg) hat viel transparenten
+    // Rand fuer ihren Schatten -> als Bild wuerden die Karten sichtbar weiter
+    // auseinander stehen. Deshalb hier die gleiche Optik (Verlauf + Rundung +
+    // Schatten) direkt in CSS, damit der Abstand exakt wie bei Code vibes ist.
+    .game[data-theme="gaming"] & {
+        aspect-ratio: 7 / 8;
+        border-radius: 12px;
+        // wie Frontgd.svg: dunkel (#0A2835) unten links -> Pink (#ED1B76) oben rechts
+        background: linear-gradient(to top right, #0a2835 0%, #ed1b76 92%);
+        box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.25); // wie in Property 1=Component 1.svg
+    }
+}
+
+// Vorderseite: liegt deckungsgleich ueber der Rueckseite und ist bis zum
+// spaeteren Flip per hidden-Attribut (aus main.ts) ausgeblendet.
+.card__front {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+// --- Quit-/Exit-Popup ------------------------------------------------
+// Das Popup-Bild kommt aus den Assets (Code vibes: Pop up_01.svg,
+// Gaming: Pop up_02.svg). Die im Bild gezeichneten Buttons werden mit
+// transparenten, klickbaren Flaechen belegt (Positionen als % der
+// jeweiligen SVG-viewBox).
+.quit-popup {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.45);
+    z-index: 10;
+}
+
+.quit-popup__dialog {
+    position: relative;
+    width: 100%;
+    max-width: 32rem;
+    line-height: 0;
+}
+
+// Deckt den Button-Bereich des Popup-Bildes ab, damit beim Hover (scale/translate)
+// nicht der darunterliegende, im SVG gezeichnete Button durchscheint.
+.quit-popup__dialog::before {
+    content: "";
+    position: absolute;
+    inset: 56% 3% 5%;
+    z-index: 1;
+    background-color: #ffffff; // Code-vibes-Karte
+}
+
+.game[data-theme="gaming"] .quit-popup__dialog::before {
+    background-color: #f0f6f9; // Gaming-Karte
+}
+
+.quit-popup__art {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.quit-popup__art--gaming {
+    display: none;
+}
+
+.game[data-theme="gaming"] .quit-popup__art--code {
+    display: none;
+}
+
+.game[data-theme="gaming"] .quit-popup__art--gaming {
+    display: block;
+}
+
+// Die Buttons werden als echte HTML-Buttons ueber den im SVG gezeichneten
+// Buttons platziert (gleiche %-Positionen) und decken diese vollstaendig ab –
+// dadurch ist im Hover Text-/Rahmenfarbe, Groesse usw. frei steuerbar.
+// Normal-Optik = wie Pop up_01.svg / Pop up_02.svg,
+// Hover = Property 1j=hover.svg / Pop up button.svg / button Pop up.svg.
+.quit-popup__btn {
+    position: absolute;
+    z-index: 2; // ueber der Abdeckung
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0; // Code vibes: eckig wie im SVG
+    font-family: inherit;
+    font-weight: 700;
+    font-size: clamp(0.7rem, 2.5vw, 0.95rem);
+    line-height: 1;
+    cursor: pointer;
+    transform-origin: center;
+    transition:
+        transform 0.12s ease,
+        background-color 0.12s ease,
+        box-shadow 0.12s ease,
+        color 0.12s ease;
+
+    &:focus-visible {
+        outline: 2px solid #ffffff;
+        outline-offset: 2px;
+    }
+}
+
+.quit-popup__btn-label--gaming {
+    display: none;
+}
+
+.game[data-theme="gaming"] {
+    .quit-popup__btn {
+        border-radius: 9px;
+    }
+
+    .quit-popup__btn-label--code {
+        display: none;
+    }
+
+    .quit-popup__btn-label--gaming {
+        display: inline;
+    }
+}
+
+// --- Code vibes: Pop up_01.svg (viewBox 539 x 270) ---
+.quit-popup__btn--stay {
+    left: 17.16%;
+    top: 64.07%;
+    width: 33.77%;
+    height: 21.11%;
+    background-color: #66cfbc; // "Back to game" solide
+    color: #ffffff;
+
+    // Hover (Pop up button.svg, unten): Fuellung blasser, dickerer Rahmen ringsum.
+    &:hover {
+        background-color: #94ddd0; // #66CFBC @ 0.7 auf Weiss
+        box-shadow: inset 0 0 0 4px #3abca4;
+    }
+}
+
+.quit-popup__btn--leave {
+    left: 55.57%;
+    top: 64.44%;
+    width: 27.09%;
+    height: 20.37%;
+    background-color: #eefcf9; // #86E9D6 @ 0.14 auf Weiss
+    box-shadow: inset 0 0 0 2px #4dd5bc;
+    color: #4dd5bc; // "Exit game" Text teal
+
+    // Hover (Property 1j=hover.svg): blasser, dickerer Rahmen ringsum, Schatten,
+    // leichtes translate + scale.
+    &:hover {
+        background-color: #dff9f4; // #86E9D6 @ 0.26 auf Weiss
+        box-shadow: inset 0 0 0 4px #4dd5bc, 5px 7px 12px rgba(0, 0, 0, 0.22);
+        transform: translate(-1px, -2px) scale(1.03);
+    }
+}
+
+// --- Gaming: Pop up_02.svg (viewBox 481 x 254) ---
+.game[data-theme="gaming"] .quit-popup__btn--stay {
+    left: 8.42%;
+    top: 67.13%;
+    width: 41.58%;
+    height: 16.93%;
+    background-color: #ed1b76; // "No, back to game" solide
+    box-shadow: inset 0 0 0 1px #e71c4f;
+    color: #ffffff;
+
+    // Hover (button Pop up.svg, unten): rosa Hintergrund weg, Text pink,
+    // dickerer Rahmen ringsum, Schatten.
+    &:hover {
+        background-color: #f0f2f6; // #F2C7DA @ 0.08 auf #F0F6F9
+        box-shadow: inset 0 0 0 3px #e71c4f, 4px 6px 12px rgba(0, 0, 0, 0.22);
+        color: #ed1b76;
+    }
+}
+
+.game[data-theme="gaming"] .quit-popup__btn--leave {
+    left: 55.3%;
+    top: 67.32%;
+    width: 36.17%;
+    height: 16.54%;
+    background-color: #efe4ee; // #ED1B76 @ 0.08 auf #F0F6F9
+    box-shadow: inset 0 0 0 2px #e71c4f;
+    color: #ed1b76; // "Yes, quit game" Text pink
+
+    // Hover: leichtes translate + scale, dickerer Rahmen ringsum.
+    &:hover {
+        box-shadow: inset 0 0 0 4px #e71c4f;
+        transform: translate(-1px, -2px) scale(1.03);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .quit-popup__btn {
+        transition: none;
+    }
+
+    .quit-popup__btn--leave:hover {
+        transform: none;
+    }
+}

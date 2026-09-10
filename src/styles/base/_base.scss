@@ -1,0 +1,31 @@
+// -----------------------------------------------------------------------------
+// Basis-Styles (globale Element-Regeln)
+// -----------------------------------------------------------------------------
+
+@use "../abstracts" as *;
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+// [hidden] zuverlaessig durchsetzen (auch gegen display: flex o. Ae.)
+[hidden] {
+    display: none !important;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    background-color: $color-page-bg;
+    color: $color-accent-ink;
+    font-family: $font-family-base;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}

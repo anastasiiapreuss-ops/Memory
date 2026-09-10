@@ -1,0 +1,4 @@
+// Bündelt alle Komponenten-Partials und stellt sie via @forward bereit.
+@forward "button";
+@forward "gamepad";
+@forward "radio";

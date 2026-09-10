@@ -1,0 +1,4 @@
+// Bündelt alle Seiten-Partials und stellt sie via @forward bereit.
+@forward "home";
+@forward "settings";
+@forward "game";

@@ -1,0 +1,31 @@
+// -----------------------------------------------------------------------------
+// Variablen / Design-Tokens
+// -----------------------------------------------------------------------------
+
+// Farben ----------------------------------------------------------------------
+$color-page-bg:      #dcdcdc; // heller Seitenhintergrund (Rahmen um die Buehne)
+$color-stage-bg:     #2e2e2e; // dunkle Buehne (Flaeche des Homescreens)
+$color-text-on-dark: #ffffff; // Text auf der dunklen Buehne
+$color-accent:       #f0ea6e; // Gelb – Play-Button (Design-Token aus den Assets)
+$color-accent-ink:   #303131; // dunkle Schrift auf Gelb
+$color-gamepad:      #f0ea6e; // Farbe des dezenten Gamepad-Wasserzeichens
+
+// Settings-Ansicht ----------------------------------------------------------
+$color-surface:       #ffffff; // helle Flaeche der Settings-Ansicht
+$color-ink:           #1f1f1f; // sehr dunkle Ueberschriften
+$color-muted:         #9a9a9a; // ausgegraute Sekundaertexte (Breadcrumb)
+$color-startbar-bg:   #efefef; // helle Leiste unter der Vorschau
+$color-player-blue:   #2aa5e0;
+$color-player-orange: #e58a2e;
+
+// Typografie ----------------------------------------------------------------
+// System-Stack, moeglichst nah an der geometrischen Sans der Designvorlage.
+$font-family-base:
+    "Avenir Next", "Avenir", "Century Gothic", "Futura",
+    "Segoe UI", "Helvetica Neue", "Arial", sans-serif;
+
+// Layout ------------------------------------------------------------------
+$stage-max-width: 70rem;
+$page-gutter:     2rem;   // Rahmen um die Buehne ab Tablet
+$page-gutter-sm:  1rem;   // Rahmen um die Buehne auf schmalen Screens
+$breakpoint-md:   48rem;  // ~768px

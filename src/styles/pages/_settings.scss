@@ -1,0 +1,306 @@
+// -----------------------------------------------------------------------------
+// Settings-Ansicht (Vorlage: Screenshot 2026-09-10 095919 – coding vibes).
+// Weisse Flaeche, die die Buehne fuellt; grauer Rand kommt von .page.
+// Links die drei Einstellungen, rechts ein kompaktes Vorschau-Panel + die
+// Start-/Auswahlleiste. Reine Darstellung – keine Auswahl-Logik.
+// -----------------------------------------------------------------------------
+
+@use "../abstracts" as *;
+
+.settings {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: safe center; // vertikal zentriert -> gleicher Abstand oben/unten
+    background-color: $color-surface;
+    color: $color-accent-ink;
+}
+
+.settings__inner {
+    width: 100%; // volle Breite behalten -> horizontaler Abstand zwischen Spalten bleibt
+    max-width: 62rem;
+    margin-inline: auto;
+    // symmetrischer Innenabstand; die vertikale Zentrierung uebernimmt .settings
+    padding: clamp(2rem, 6vw, 3.75rem) clamp(1.25rem, 5vw, 4rem);
+}
+
+// --- Ueberschrift: kurzer, duenner gelber Strich + kleine Raute links -----
+.settings__title {
+    position: relative;
+    display: inline-block;
+    margin: 0 0 2.7rem;
+    padding-bottom: 0.95rem;
+    font-size: clamp(1.95rem, 1rem + 2.8vw, 2.7rem);
+    font-weight: 800;
+    color: $color-ink;
+}
+
+.settings__title::after {
+    content: "";
+    position: absolute;
+    left: 0.05rem;    // links deutlich ueber das Wort hinaus (>10px laenger)
+    right: -0.65rem;  // rechts etwas ueber das Wort hinaus
+    bottom: 0.35rem;
+    height: 3px;      // duenn
+    background-color: $color-accent;
+}
+
+.settings__title::before {
+    content: "";
+    position: absolute;
+    left: -0.65rem;   // Raute am linken, verlaengerten Ende
+    bottom: calc(0.35rem - 4px);
+    width: 11px;      // etwas groesser
+    height: 11px;
+    background-color: $color-accent;
+    transform: rotate(45deg); // gedrehtes Quadrat (Raute)
+}
+
+.settings__body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 5vw, 3.5rem);
+    align-items: start;
+
+    @media (min-width: $breakpoint-md) {
+        // linke Spalte an den linken Rand, Preview an den rechten -> weit rechts
+        grid-template-columns: auto minmax(0, 24rem);
+        justify-content: space-between;
+        column-gap: 2rem;
+    }
+}
+
+// --- linke Spalte: die drei Einstellungen ------------------------------
+.settings__form {
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem; // deutlicher Abstand zwischen den Sektionen
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.setting {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    min-width: 0;
+}
+
+.setting__label {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0;
+    margin-bottom: 1rem; // mehr Abstand zwischen Ueberschrift und Radio-Zeilen
+    font-size: 1.18rem;
+    font-weight: 900; // deutlich kraeftiger als der Optionstext
+    -webkit-text-stroke: 0.03em currentColor;
+    color: $color-ink;
+}
+
+// Section-Icon (palette / chess_pawn / style) – bringt eigene Farbe mit.
+.setting__icon {
+    flex: none;
+    display: block;
+    width: auto;
+    height: 1.2em; // Proportion des jeweiligen SVG bleibt erhalten
+}
+
+// Radio-Zeilen beginnen eingerueckt unter der Ueberschrift – etwa an der
+// Ueberschrift-Textkante (leicht rechts davon), wie im Figma-Screenshot.
+// Icon und Ueberschrift selbst bleiben unveraendert.
+.setting .option {
+    padding-left: 1.9rem;
+}
+
+// --- rechte Spalte: kompaktes Vorschau-Panel + Auswahlleiste ---------
+.settings__preview {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 24rem;
+}
+
+.preview-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    // Oberkante des Panels auf Hoehe der Ueberschrift "Game themes" bringen
+    margin-top: 0.25rem;
+    aspect-ratio: 1.13 / 1; // etwas breiter, Hoehe bleibt nahezu gleich
+    padding: 0.65rem;
+    border-radius: 14px;
+    overflow: hidden;
+    // kraeftiger diagonaler Verlauf: unten links deutlich heller -> oben rechts dunkel
+    background: linear-gradient(45deg, #6b6b6b 0%, #171717 82%);
+}
+
+.preview-board__bar {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.preview-board__cards {
+    display: block;
+    width: 80%; // 20% kleiner als das Panel
+    height: auto;
+    margin: auto; // im Restplatz zentriert
+}
+
+// Code-vibes-Header in der Vorschau – nachgebaut wie der echte Game-Header
+// (kein Band, eckiger Teal-Balken hinter dem Score, Faehnchen-Icons, teal
+// umrandeter Exit-Button).
+.preview-board__bar--code {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.35rem;
+    width: 100%;
+    padding-inline: 0.75rem; // mehr Abstand zum linken/rechten Panel-Rand
+    font-size: 0.5rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.preview-hud__score {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0.42rem;
+    background-color: rgba(134, 233, 214, 0.2);
+}
+
+.preview-hud__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.22rem;
+
+    &--blue {
+        color: #2bb1ff;
+    }
+
+    &--orange {
+        color: #f58e39;
+    }
+}
+
+.preview-hud__turn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.preview-hud__flag {
+    display: inline-block;
+    width: 1.15em;
+    height: 0.85em;
+    background-color: currentColor;
+    clip-path: polygon(0 0, 72% 0, 100% 50%, 72% 100%, 0 100%);
+
+    &--blue {
+        color: #2bb1ff;
+    }
+}
+
+.preview-hud__exit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.28rem;
+    padding: 0.24rem 0.4rem;
+    border: 1px solid #4dd5bc;
+    background-color: rgba(134, 233, 214, 0.2);
+
+    svg {
+        display: block;
+        width: auto;
+        height: 1.9em;
+    }
+}
+
+// --- Theme-abhaengiger Preview-Inhalt ---------------------------------
+// Standard: Code-Vibes-Variante (Gradient bleibt wie oben in .preview-board).
+// Gaming theme ausgewaehlt -> Gradient + Karten/Leiste umschalten. Rein per
+// CSS ueber die ausgewaehlte "Game themes"-Option, daher sofortige Aktualisierung.
+// Groesse, Border-Radius, Layout des Rechtecks bleiben unveraendert.
+.preview-board__bar--gaming,
+.preview-board__cards--gaming {
+    display: none; // Standard: Gaming-Variante ausgeblendet
+}
+
+.settings__body:has(input[name="game-theme"][value="gaming"]:checked) {
+    .preview-board {
+        // Gaming-Gradient: gleiche diagonale Richtung wie der Code-Vibes-Verlauf
+        background: linear-gradient(
+            45deg,
+            rgba(41, 79, 96, 1) 0%,
+            rgba(32, 134, 180, 1) 82%
+        );
+    }
+
+    .preview-board__bar--code,
+    .preview-board__cards--code {
+        display: none;
+    }
+
+    .preview-board__bar--gaming {
+        display: block;
+    }
+
+    .preview-board__cards--gaming {
+        display: block;
+    }
+}
+
+// --- untere Auswahlleiste: nach links laenger, rechts buendig mit dem Preview ---
+.startbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-inline-start: -2.25rem; // ragt nur nach links ueber das Preview hinaus
+    margin-inline-end: 0;          // rechte Kante genau auf Hoehe der Preview-Kante
+    padding: 0.5rem 0.8rem 0.5rem 1.3rem;
+    background-color: $color-startbar-bg;
+}
+
+.breadcrumb {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: 0.92rem; // etwas groesser statt dicker
+    color: $color-ink; // schwarz statt grau
+    transition: transform 0.15s ease;
+}
+
+// Beim Hover ueber den Start-Button waechst dieser und schiebt die Breadcrumb
+// links davon ein Stueck nach links mit. Rein visuell, kein Reflow. Wirkt auch
+// bei noch unvollstaendiger Auswahl.
+.startbar:has(.button--start:hover) .breadcrumb,
+.startbar:has(.button--start:focus-visible) .breadcrumb {
+    transform: translateX(-0.35rem);
+}
+
+.breadcrumb__sep {
+    flex: none;
+    width: 5px; // dicker
+    height: 1.4rem; // hoeher
+    border-radius: 0; // keine Rundung / kein normaler Border
+    background-color: $color-accent;
+    transform: skewX(-20deg); // diagonal: links unten -> rechts oben
+    font-size: 0; // literales "/" nur als Fallback im Markup
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .breadcrumb {
+        transition: none;
+    }
+
+    .startbar:has(.button--start:hover) .breadcrumb,
+    .startbar:has(.button--start:focus-visible) .breadcrumb {
+        transform: none;
+    }
+}

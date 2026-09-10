@@ -1,0 +1,31 @@
+// -----------------------------------------------------------------------------
+// Buehne – heller Rahmen (.page) um eine dunkle Flaeche (.stage).
+// Grundgeruest fuer den Homescreen; spaeter auch fuer weitere Screens nutzbar.
+// -----------------------------------------------------------------------------
+
+@use "../abstracts" as *;
+
+.page {
+    min-height: 100vh;
+    padding: $page-gutter-sm;
+    background-color: $color-page-bg;
+
+    @media (min-width: $breakpoint-md) {
+        padding: $page-gutter;
+    }
+}
+
+.stage {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden; // schneidet das Gamepad-Wasserzeichen am Rand ab
+    max-width: $stage-max-width;
+    margin-inline: auto;
+    min-height: calc(100vh - (#{$page-gutter-sm} * 2));
+    background-color: $color-stage-bg;
+
+    @media (min-width: $breakpoint-md) {
+        min-height: calc(100vh - (#{$page-gutter} * 2));
+    }
+}

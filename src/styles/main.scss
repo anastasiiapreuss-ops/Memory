@@ -1,0 +1,12 @@
+// -----------------------------------------------------------------------------
+// main.scss – zentraler SCSS-Einstiegspunkt (7-1 Pattern)
+// Reihenfolge: abstracts -> vendors -> base -> layout -> components -> pages -> themes
+// -----------------------------------------------------------------------------
+
+@use "abstracts";
+@use "vendors";
+@use "base";
+@use "layout";
+@use "components";
+@use "pages";
+@use "themes";

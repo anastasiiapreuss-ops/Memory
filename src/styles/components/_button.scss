@@ -1,0 +1,188 @@
+// -----------------------------------------------------------------------------
+// Buttons
+// -----------------------------------------------------------------------------
+
+@use "../abstracts" as *;
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    border: 0;
+    border-radius: 0; // keine sichtbare Rundung (siehe Designvorlage)
+    font-family: inherit;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button__icon {
+    flex: none;
+    display: block;
+    width: auto;
+    height: 1.5em; // Proportion aus der Vorlage (nicht verzerren)
+    transform-origin: center;
+    transition: transform 0.15s ease;
+}
+
+.button__arrow {
+    flex: none;
+    display: block;
+    width: auto;
+    margin-left: -0.1rem; // Pfeil etwas näher an "Play" (wie in der Vorlage)
+}
+
+// Normalzustand: schlanker Pfeil (Vorlage: Property 1=Default (1).svg)
+.button__arrow--thin {
+    height: 0.7em;
+}
+
+// Hover: kräftigerer Pfeil (Vorlage: Property 1=hover.svg)
+.button__arrow--bold {
+    display: none;
+    height: 1.15em;
+}
+
+// Gelber Play-Button auf dem Homescreen.
+// Normalzustand exakt wie Property 1=Default (1).svg.
+// Hover (Property 1=hover.svg): Button leicht groesser, Gamepad leicht gedreht,
+// Pfeil kräftiger. Beim Verlassen kehrt alles zurueck.
+.button--play {
+    padding: 1.15rem 1.6rem;
+    background-color: $color-accent;
+    color: $color-accent-ink;
+    font-size: 1.125rem;
+    transform-origin: center;
+    transition: transform 0.15s ease;
+
+    &:hover,
+    &:focus-visible {
+        transform: scale(1.06);
+
+        .button__icon {
+            transform: rotate(-13deg);
+        }
+
+        .button__arrow--thin {
+            display: none;
+        }
+
+        .button__arrow--bold {
+            display: block;
+        }
+    }
+
+    &:active {
+        transform: scale(0.98); // kurzes Zurueckskalieren = Klickgefuehl
+        transition-duration: 0.06s;
+    }
+}
+
+// Gelber Start-Button der Settings-Ansicht (Vorlage: small button.svg).
+// Normal: solides Gelb, dunkles Icon + "Start".
+// Hover: leicht groesser + Icon leicht gedreht.
+// Unvollstaendige Auswahl: grauer, deaktivierter Zustand.
+.button--start {
+    padding: 0.7rem 1.2rem;
+    background-color: $color-accent;
+    color: $color-accent-ink;
+    font-size: 1rem;
+    transform-origin: center;
+    transition: transform 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+
+    &:hover,
+    &:focus-visible {
+        transform: scale(1.09);
+
+        .button__icon {
+            transform: rotate(-5deg); // wie small button.svg (Hover)
+        }
+    }
+
+    &:active {
+        transform: scale(0.98); // kurzes Zurueckskalieren = Klickgefuehl
+        transition-duration: 0.06s;
+    }
+
+    // Unvollstaendige Auswahl (aria-disabled von main.ts) -> grau, kein Feedback.
+    &[aria-disabled="true"] {
+        background-color: #dbdbd6;
+        color: #a3a1a1;
+
+        &:hover,
+        &:focus-visible,
+        &:active {
+            transform: none;
+            background-color: #dbdbd6;
+        }
+
+        .button__icon {
+            transform: none;
+        }
+    }
+}
+
+// "Exit game"-Button im Game-Header.
+// Standard = Code vibes: teal umrandeter Button, weisse Schrift + Icon, eckig
+// (Vorlage: secondary button.svg).
+.button--exit {
+    padding: 0.55rem 1rem;
+    border: 1px solid #4dd5bc;
+    background-color: rgba(134, 233, 214, 0.2);
+    color: #ffffff;
+    font-size: 1.25rem; // Header deutlich groesser
+    transition: background-color 0.15s ease, box-shadow 0.15s ease;
+
+    &:hover,
+    &:focus-visible {
+        background-color: rgba(134, 233, 214, 0.34);
+    }
+}
+
+// Nur im Code-vibes-Header: beim Hover ein dezenter weisslicher Schatten.
+.game[data-theme="code-vibes"] .button--exit:hover,
+.game[data-theme="code-vibes"] .button--exit:focus-visible {
+    box-shadow: 0 4px 10px rgba(230, 250, 245, 0.18);
+}
+
+// Gaming: pinker Umriss-Button, gerundet (Vorlage: game theme.svg).
+// Icon + Text standardmaessig weiss – das Tuer-Icon wird nur beim Hover rot.
+.game[data-theme="gaming"] .button--exit {
+    border: 2px solid #e71c4f;
+    border-radius: 9px;
+    background-color: rgba(237, 27, 118, 0.08);
+
+    &:hover,
+    &:focus-visible {
+        background-color: rgba(237, 27, 118, 0.16);
+
+        .button__icon {
+            color: #e71c4f;
+        }
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .button--play,
+    .button--start,
+    .button__icon {
+        transition: none;
+    }
+
+    .button--play:hover,
+    .button--play:focus-visible,
+    .button--play:active,
+    .button--start:hover,
+    .button--start:focus-visible,
+    .button--start:active {
+        transform: none;
+    }
+
+    .button--play:hover .button__icon,
+    .button--play:focus-visible .button__icon,
+    .button--start:hover .button__icon,
+    .button--start:focus-visible .button__icon {
+        transform: none;
+    }
+}
