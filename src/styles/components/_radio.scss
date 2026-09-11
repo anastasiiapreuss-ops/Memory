@@ -1,9 +1,10 @@
 // -----------------------------------------------------------------------------
-// Auswahl-Option – Zeile aus rundem Selektor + Beschriftung.
-// Die Auswahl-Logik uebernimmt der Browser nativ:
-//   - Game themes / Board size: <input type="radio"> (immer nur eine Auswahl)
-//   - Choose player:            <input type="checkbox"> (mehrere moeglich)
-// Der gelbe Auswahl-Indikator rechts wird rein per CSS ueber :checked gezeigt.
+// Selection option – row made of a round selector + label.
+// The browser handles the selection logic natively: every group
+// (game theme / player / board size) is an <input type="radio">, so only
+// one option per group can ever be selected.
+// The yellow selection indicator on the right is shown purely via CSS
+// based on :checked.
 // -----------------------------------------------------------------------------
 
 @use "../abstracts" as *;
@@ -15,7 +16,7 @@
     padding: 0.22rem 0;
     color: #2b2b2b;
     font-size: 1rem;
-    font-weight: 600; // kraeftig, aber etwas weniger als zuvor
+    font-weight: 600; // bold, but a bit less than before
     cursor: pointer;
 }
 
@@ -31,11 +32,11 @@
     background-color: $color-surface;
     cursor: pointer;
 
-    // ausgewaehlt ODER gehovert -> Selektor zeigt den Punkt (Bullseye)
+    // checked OR hovered -> the selector shows the dot (bullseye)
     &:checked,
     .option:hover & {
         background-color: $color-accent-ink;
-        box-shadow: inset 0 0 0 2px $color-surface; // Ring – Luecke – Punkt
+        box-shadow: inset 0 0 0 2px $color-surface; // ring – gap – dot
     }
 
     &:focus-visible {
@@ -44,11 +45,12 @@
     }
 }
 
-// --- gelber Indikator: bei ausgewaehlter ODER gehoverter Option ------------
-// Duenner gelber Balken (~20px) mit kleiner, 45° gedrehter Raute am rechten
-// Ende – optisch wie der Indikator unter "Settings", aber deutlich kleiner.
-// Sichtbar bei :checked (bleibt dauerhaft) und bei :hover (verschwindet beim
-// Verlassen). Gleiche Optik in beiden Faellen. Aendert die Anordnung nicht.
+// --- yellow indicator: shown when the option is selected OR hovered --------
+// Thin yellow bar (~20px) with a small, 45°-rotated diamond at the right
+// end – visually like the indicator under "Settings", just noticeably
+// smaller. Visible on :checked (stays permanently) and on :hover
+// (disappears again on mouse-leave). Same look in both cases. Doesn't
+// change the layout.
 .option__text {
     position: relative;
 }
@@ -67,7 +69,7 @@
 .option__input:checked ~ .option__text::after,
 .option:hover .option__text::after {
     left: calc(100% + 0.5rem);
-    width: 26px; // gelber Balken etwas laenger
+    width: 26px; // yellow bar a bit longer
     height: 2px;
     transform: translateY(-50%);
 }

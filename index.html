@@ -28,9 +28,9 @@
                 </button>
             </section>
 
-            <img class="gamepad-watermark" src="/assets/stadia_controller.svg" alt="" aria-hidden="true">
+            <img class="gamepad-watermark" src="/assets/shared/stadia_controller.svg" alt="" aria-hidden="true">
 
-            <!-- Settings-Ansicht (Vorlage: Screenshot 095919 – coding vibes) -->
+            <!-- Settings view (reference: screenshot 095919 – coding vibes) -->
             <section class="settings" hidden>
                 <div class="settings__inner">
                     <h1 class="settings__title">Settings</h1>
@@ -39,7 +39,7 @@
                         <form class="settings__form">
                             <fieldset class="setting">
                                 <legend class="setting__label">
-                                    <img class="setting__icon" src="/assets/palette.svg" alt="" aria-hidden="true">
+                                    <img class="setting__icon" src="/assets/shared/palette.svg" alt="" aria-hidden="true">
                                     Game themes
                                 </legend>
                                 <label class="option">
@@ -54,22 +54,22 @@
 
                             <fieldset class="setting">
                                 <legend class="setting__label">
-                                    <img class="setting__icon" src="/assets/chess_pawn.svg" alt="" aria-hidden="true">
+                                    <img class="setting__icon" src="/assets/shared/chess_pawn.svg" alt="" aria-hidden="true">
                                     Choose player
                                 </legend>
                                 <label class="option">
-                                    <input class="option__input" type="checkbox" name="player" value="blue">
+                                    <input class="option__input" type="radio" name="player" value="blue">
                                     <span class="option__text">Blue</span>
                                 </label>
                                 <label class="option">
-                                    <input class="option__input" type="checkbox" name="player" value="orange">
+                                    <input class="option__input" type="radio" name="player" value="orange">
                                     <span class="option__text">Orange</span>
                                 </label>
                             </fieldset>
 
                             <fieldset class="setting">
                                 <legend class="setting__label">
-                                    <img class="setting__icon" src="/assets/style.svg" alt="" aria-hidden="true">
+                                    <img class="setting__icon" src="/assets/shared/style.svg" alt="" aria-hidden="true">
                                     Board size
                                 </legend>
                                 <label class="option">
@@ -89,7 +89,7 @@
 
                         <div class="settings__preview">
                             <div class="preview-board">
-                                <!-- Code vibes theme (Standard) -->
+                                <!-- Code vibes theme (default) -->
                                 <div class="preview-board__bar preview-board__bar--code" aria-hidden="true">
                                     <span class="preview-hud__score">
                                         <span class="preview-hud__chip preview-hud__chip--blue"><span class="preview-hud__flag"></span>0</span>
@@ -100,10 +100,10 @@
                                         <svg viewBox="24 16 30 30"><path fill="currentColor" d="M49.1875 32.25H35.25C34.8958 32.25 34.599 32.1302 34.3594 31.8906C34.1198 31.651 34 31.3542 34 31C34 30.6458 34.1198 30.349 34.3594 30.1094C34.599 29.8698 34.8958 29.75 35.25 29.75H49.1875L48.125 28.6875C47.875 28.4375 47.7552 28.1458 47.7656 27.8125C47.776 27.4792 47.8958 27.1875 48.125 26.9375C48.375 26.6875 48.6719 26.5573 49.0156 26.5469C49.3594 26.5365 49.6562 26.6562 49.9062 26.9062L53.125 30.125C53.375 30.375 53.5 30.6667 53.5 31C53.5 31.3333 53.375 31.625 53.125 31.875L49.9062 35.0938C49.6562 35.3438 49.3594 35.4635 49.0156 35.4531C48.6719 35.4427 48.375 35.3125 48.125 35.0625C47.8958 34.8125 47.776 34.5208 47.7656 34.1875C47.7552 33.8542 47.875 33.5625 48.125 33.3125L49.1875 32.25ZM42.75 26V22.25H30.25V39.75H42.75V36C42.75 35.6458 42.8698 35.349 43.1094 35.1094C43.349 34.8698 43.6458 34.75 44 34.75C44.3542 34.75 44.651 34.8698 44.8906 35.1094C45.1302 35.349 45.25 35.6458 45.25 36V39.75C45.25 40.4375 45.0052 41.026 44.5156 41.5156C44.026 42.0052 43.4375 42.25 42.75 42.25H30.25C29.5625 42.25 28.974 42.0052 28.4844 41.5156C27.9948 41.026 27.75 40.4375 27.75 39.75V22.25C27.75 21.5625 27.9948 20.974 28.4844 20.4844C28.974 19.9948 29.5625 19.75 30.25 19.75H42.75C43.4375 19.75 44.026 19.9948 44.5156 20.4844C45.0052 20.974 45.25 21.5625 45.25 22.25V26C45.25 26.3542 45.1302 26.651 44.8906 26.8906C44.651 27.1302 44.3542 27.25 44 27.25C43.6458 27.25 43.349 27.1302 43.1094 26.8906C42.8698 26.651 42.75 26.3542 42.75 26Z"/></svg>Exit game
                                     </span>
                                 </div>
-                                <img class="preview-board__cards preview-board__cards--code" src="/assets/Frame%20631.svg" alt="" aria-hidden="true">
+                                <img class="preview-board__cards preview-board__cards--code" src="/assets/shared/Frame%20631.svg" alt="" aria-hidden="true">
                                 <!-- Gaming theme -->
-                                <img class="preview-board__bar preview-board__bar--gaming" src="/assets/Frame%20610%20(2).svg" alt="" aria-hidden="true">
-                                <img class="preview-board__cards preview-board__cards--gaming" src="/assets/Frame%20627.svg" alt="" aria-hidden="true">
+                                <img class="preview-board__bar preview-board__bar--gaming" src="/assets/shared/Frame%20610%20(2).svg" alt="" aria-hidden="true">
+                                <img class="preview-board__cards preview-board__cards--gaming" src="/assets/shared/Frame%20627.svg" alt="" aria-hidden="true">
                             </div>
 
                             <div class="startbar">
@@ -127,9 +127,8 @@
                 </div>
             </section>
 
-            <!-- Game-Screen: statisches Board-Layout + Header. Theme / Spieler /
-                 Board-Groesse werden per data-Attribut von main.ts gesetzt.
-                 Noch keine Flip-/Match-/Game-over-Logik. -->
+            <!-- Game screen: static board layout + header. Theme / player /
+                 board size are set via data attribute by main.ts. -->
             <section class="game" hidden>
                 <div class="game__inner">
                     <header class="game-bar">
@@ -153,7 +152,7 @@
                         </div>
 
                         <p class="game-bar__turn">
-                            Current player:
+                            <span class="game-bar__turn-label">Current player:</span>
                             <span class="player-icon current-player-icon" aria-hidden="true">
                                 <svg class="player-icon__glyph player-icon__glyph--flag" viewBox="0 0 24 20"><path fill="currentColor" d="M2.46154 20C1.78462 20 1.20513 19.7552 0.723077 19.2656C0.241026 18.776 0 18.1875 0 17.5V2.5C0 1.8125 0.241026 1.22396 0.723077 0.734375C1.20513 0.244792 1.78462 0 2.46154 0H16C16.3897 0 16.759 0.0885417 17.1077 0.265625C17.4564 0.442708 17.7436 0.6875 17.9692 1L23.5077 8.5C23.8359 8.9375 24 9.4375 24 10C24 10.5625 23.8359 11.0625 23.5077 11.5L17.9692 19C17.7436 19.3125 17.4564 19.5573 17.1077 19.7344C16.759 19.9115 16.3897 20 16 20H2.46154Z"/></svg>
                                 <svg class="player-icon__glyph player-icon__glyph--pawn" viewBox="0 0 22 27"><path fill="currentColor" d="M2.66667 26.6667C1.93333 26.6667 1.30556 26.4056 0.783333 25.8833C0.261111 25.3611 0 24.7333 0 24V21.3667C0 20.9222 0.1 20.5111 0.3 20.1333C0.5 19.7556 0.766667 19.4333 1.1 19.1667C2.63333 17.9222 3.78333 16.6667 4.55 15.4C5.31667 14.1333 5.85556 13 6.16667 12H4C3.62222 12 3.30556 11.8722 3.05 11.6167C2.79444 11.3611 2.66667 11.0444 2.66667 10.6667C2.66667 10.2889 2.79444 9.97222 3.05 9.71667C3.30556 9.46111 3.62222 9.33333 4 9.33333H5.66667C5.35556 8.84444 5.11111 8.32222 4.93333 7.76667C4.75556 7.21111 4.66667 6.62222 4.66667 6C4.66667 4.33333 5.25 2.91667 6.41667 1.75C7.58333 0.583333 9 0 10.6667 0C12.3333 0 13.75 0.583333 14.9167 1.75C16.0833 2.91667 16.6667 4.33333 16.6667 6C16.6667 6.62222 16.5778 7.21111 16.4 7.76667C16.2222 8.32222 15.9778 8.84444 15.6667 9.33333H17.3333C17.7111 9.33333 18.0278 9.46111 18.2833 9.71667C18.5389 9.97222 18.6667 10.2889 18.6667 10.6667C18.6667 11.0444 18.5389 11.3611 18.2833 11.6167C18.0278 11.8722 17.7111 12 17.3333 12H15.1667C15.4778 13 16.0167 14.1333 16.7833 15.4C17.55 16.6667 18.7 17.9222 20.2333 19.1667C20.5667 19.4333 20.8333 19.7556 21.0333 20.1333C21.2333 20.5111 21.3333 20.9222 21.3333 21.3667V24C21.3333 24.7333 21.0722 25.3611 20.55 25.8833C20.0278 26.4056 19.4 26.6667 18.6667 26.6667H2.66667ZM2.66667 24H18.6667V21.3333C16.6222 19.7333 15.1444 18.0833 14.2333 16.3833C13.3222 14.6833 12.7111 13.2222 12.4 12H8.93333C8.62222 13.2222 8.01111 14.6833 7.1 16.3833C6.18889 18.0833 4.71111 19.7333 2.66667 21.3333V24ZM10.6667 9.33333C11.6 9.33333 12.3889 9.01111 13.0333 8.36667C13.6778 7.72222 14 6.93333 14 6C14 5.06667 13.6778 4.27778 13.0333 3.63333C12.3889 2.98889 11.6 2.66667 10.6667 2.66667C9.73333 2.66667 8.94444 2.98889 8.3 3.63333C7.65556 4.27778 7.33333 5.06667 7.33333 6C7.33333 6.93333 7.65556 7.72222 8.3 8.36667C8.94444 9.01111 9.73333 9.33333 10.6667 9.33333Z"/></svg>
@@ -169,13 +168,13 @@
                     <div class="board" id="board"></div>
                 </div>
 
-                <!-- Quit-/Exit-Popup: Bild je nach data-theme (Code vibes ->
-                     Pop up_01.svg, Gaming -> Pop up_02.svg). Die Buttons im
-                     Bild werden mit transparenten Klickflaechen belegt. -->
+                <!-- Quit/exit popup: image depends on data-theme (Code vibes ->
+                     Pop up_01.svg, Gaming -> Pop up_02.svg). The buttons drawn in
+                     the image get transparent, clickable areas overlaid. -->
                 <div class="quit-popup" id="quit-popup" hidden>
                     <div class="quit-popup__dialog">
-                        <img class="quit-popup__art quit-popup__art--code" src="/assets/Pop%20up_01.svg" alt="Are you sure you want to quit the game?">
-                        <img class="quit-popup__art quit-popup__art--gaming" src="/assets/Pop%20up_02.svg" alt="Are you sure you want to quit the game?">
+                        <img class="quit-popup__art quit-popup__art--code" src="/assets/shared/Pop%20up_01.svg" alt="Are you sure you want to quit the game?">
+                        <img class="quit-popup__art quit-popup__art--gaming" src="/assets/shared/Pop%20up_02.svg" alt="Are you sure you want to quit the game?">
                         <button type="button" class="quit-popup__btn quit-popup__btn--stay" id="quit-stay">
                             <span class="quit-popup__btn-label quit-popup__btn-label--code">Back to game</span>
                             <span class="quit-popup__btn-label quit-popup__btn-label--gaming">No, back to game</span>
@@ -183,6 +182,81 @@
                         <button type="button" class="quit-popup__btn quit-popup__btn--leave" id="quit-leave">
                             <span class="quit-popup__btn-label quit-popup__btn-label--code">Exit game</span>
                             <span class="quit-popup__btn-label quit-popup__btn-label--gaming">Yes, quit game</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- End screen: ONE layout per theme, content switches dynamically via
+                 data-result ("win" | "lose" | "draw", set by main.ts), winner
+                 color via is-blue/is-orange. Always shows from Player 1's
+                 perspective (the color chosen in the settings) - the opponent
+                 never gets their own screen on a win. -->
+            <section class="end-screen" hidden>
+                <div class="end-screen__inner">
+                    <!-- Win: Player 1 has more points than the opponent. -->
+                    <div class="end-screen__block end-screen__block--win">
+                        <img class="end-screen__confetti" src="/assets/shared/Confetti.svg" alt="" aria-hidden="true">
+
+                        <p class="end-screen__eyebrow">The winner is</p>
+                        <h1 class="end-screen__player-name">
+                            <span class="end-screen__player-color">Blue</span> Player
+                        </h1>
+
+                        <span class="player-icon end-screen__pawn" aria-hidden="true">
+                            <svg viewBox="0 0 22 27"><path fill="currentColor" d="M2.66667 26.6667C1.93333 26.6667 1.30556 26.4056 0.783333 25.8833C0.261111 25.3611 0 24.7333 0 24V21.3667C0 20.9222 0.1 20.5111 0.3 20.1333C0.5 19.7556 0.766667 19.4333 1.1 19.1667C2.63333 17.9222 3.78333 16.6667 4.55 15.4C5.31667 14.1333 5.85556 13 6.16667 12H4C3.62222 12 3.30556 11.8722 3.05 11.6167C2.79444 11.3611 2.66667 11.0444 2.66667 10.6667C2.66667 10.2889 2.79444 9.97222 3.05 9.71667C3.30556 9.46111 3.62222 9.33333 4 9.33333H5.66667C5.35556 8.84444 5.11111 8.32222 4.93333 7.76667C4.75556 7.21111 4.66667 6.62222 4.66667 6C4.66667 4.33333 5.25 2.91667 6.41667 1.75C7.58333 0.583333 9 0 10.6667 0C12.3333 0 13.75 0.583333 14.9167 1.75C16.0833 2.91667 16.6667 4.33333 16.6667 6C16.6667 6.62222 16.5778 7.21111 16.4 7.76667C16.2222 8.32222 15.9778 8.84444 15.6667 9.33333H17.3333C17.7111 9.33333 18.0278 9.46111 18.2833 9.71667C18.5389 9.97222 18.6667 10.2889 18.6667 10.6667C18.6667 11.0444 18.5389 11.3611 18.2833 11.6167C18.0278 11.8722 17.7111 12 17.3333 12H15.1667C15.4778 13 16.0167 14.1333 16.7833 15.4C17.55 16.6667 18.7 17.9222 20.2333 19.1667C20.5667 19.4333 20.8333 19.7556 21.0333 20.1333C21.2333 20.5111 21.3333 20.9222 21.3333 21.3667V24C21.3333 24.7333 21.0722 25.3611 20.55 25.8833C20.0278 26.4056 19.4 26.6667 18.6667 26.6667H2.66667ZM2.66667 24H18.6667V21.3333C16.6222 19.7333 15.1444 18.0833 14.2333 16.3833C13.3222 14.6833 12.7111 13.2222 12.4 12H8.93333C8.62222 13.2222 8.01111 14.6833 7.1 16.3833C6.18889 18.0833 4.71111 19.7333 2.66667 21.3333V24ZM10.6667 9.33333C11.6 9.33333 12.3889 9.01111 13.0333 8.36667C13.6778 7.72222 14 6.93333 14 6C14 5.06667 13.6778 4.27778 13.0333 3.63333C12.3889 2.98889 11.6 2.66667 10.6667 2.66667C9.73333 2.66667 8.94444 2.98889 8.3 3.63333C7.65556 4.27778 7.33333 5.06667 7.33333 6C7.33333 6.93333 7.65556 7.72222 8.3 8.36667C8.94444 9.01111 9.73333 9.33333 10.6667 9.33333Z"/></svg>
+                        </span>
+
+                        <img class="end-screen__trophy" src="/assets/shared/winnerpokal.svg" alt="" aria-hidden="true">
+
+                        <button type="button" class="button button--end-cta" data-end-action="restart">
+                            <span class="end-screen__cta-label--code">Back to start</span>
+                            <span class="end-screen__cta-label--gaming">Home</span>
+                        </button>
+                    </div>
+
+                    <!-- Loss: Player 1 has fewer points than the opponent.
+                         There is deliberately NO screen for the opponent. -->
+                    <div class="end-screen__block end-screen__block--lose">
+                        <h1 class="end-screen__title">Game over</h1>
+
+                        <p class="end-screen__eyebrow">Final score</p>
+                        <div class="score end-screen__score">
+                            <span class="score__chip score__chip--blue">
+                                <span class="player-icon player-icon--blue" aria-hidden="true">
+                                    <svg class="player-icon__glyph player-icon__glyph--flag" viewBox="0 0 24 20"><path fill="currentColor" d="M2.46154 20C1.78462 20 1.20513 19.7552 0.723077 19.2656C0.241026 18.776 0 18.1875 0 17.5V2.5C0 1.8125 0.241026 1.22396 0.723077 0.734375C1.20513 0.244792 1.78462 0 2.46154 0H16C16.3897 0 16.759 0.0885417 17.1077 0.265625C17.4564 0.442708 17.7436 0.6875 17.9692 1L23.5077 8.5C23.8359 8.9375 24 9.4375 24 10C24 10.5625 23.8359 11.0625 23.5077 11.5L17.9692 19C17.7436 19.3125 17.4564 19.5573 17.1077 19.7344C16.759 19.9115 16.3897 20 16 20H2.46154Z"/></svg>
+                                    <svg class="player-icon__glyph player-icon__glyph--pawn" viewBox="0 0 22 27"><path fill="currentColor" d="M2.66667 26.6667C1.93333 26.6667 1.30556 26.4056 0.783333 25.8833C0.261111 25.3611 0 24.7333 0 24V21.3667C0 20.9222 0.1 20.5111 0.3 20.1333C0.5 19.7556 0.766667 19.4333 1.1 19.1667C2.63333 17.9222 3.78333 16.6667 4.55 15.4C5.31667 14.1333 5.85556 13 6.16667 12H4C3.62222 12 3.30556 11.8722 3.05 11.6167C2.79444 11.3611 2.66667 11.0444 2.66667 10.6667C2.66667 10.2889 2.79444 9.97222 3.05 9.71667C3.30556 9.46111 3.62222 9.33333 4 9.33333H5.66667C5.35556 8.84444 5.11111 8.32222 4.93333 7.76667C4.75556 7.21111 4.66667 6.62222 4.66667 6C4.66667 4.33333 5.25 2.91667 6.41667 1.75C7.58333 0.583333 9 0 10.6667 0C12.3333 0 13.75 0.583333 14.9167 1.75C16.0833 2.91667 16.6667 4.33333 16.6667 6C16.6667 6.62222 16.5778 7.21111 16.4 7.76667C16.2222 8.32222 15.9778 8.84444 15.6667 9.33333H17.3333C17.7111 9.33333 18.0278 9.46111 18.2833 9.71667C18.5389 9.97222 18.6667 10.2889 18.6667 10.6667C18.6667 11.0444 18.5389 11.3611 18.2833 11.6167C18.0278 11.8722 17.7111 12 17.3333 12H15.1667C15.4778 13 16.0167 14.1333 16.7833 15.4C17.55 16.6667 18.7 17.9222 20.2333 19.1667C20.5667 19.4333 20.8333 19.7556 21.0333 20.1333C21.2333 20.5111 21.3333 20.9222 21.3333 21.3667V24C21.3333 24.7333 21.0722 25.3611 20.55 25.8833C20.0278 26.4056 19.4 26.6667 18.6667 26.6667H2.66667ZM2.66667 24H18.6667V21.3333C16.6222 19.7333 15.1444 18.0833 14.2333 16.3833C13.3222 14.6833 12.7111 13.2222 12.4 12H8.93333C8.62222 13.2222 8.01111 14.6833 7.1 16.3833C6.18889 18.0833 4.71111 19.7333 2.66667 21.3333V24ZM10.6667 9.33333C11.6 9.33333 12.3889 9.01111 13.0333 8.36667C13.6778 7.72222 14 6.93333 14 6C14 5.06667 13.6778 4.27778 13.0333 3.63333C12.3889 2.98889 11.6 2.66667 10.6667 2.66667C9.73333 2.66667 8.94444 2.98889 8.3 3.63333C7.65556 4.27778 7.33333 5.06667 7.33333 6C7.33333 6.93333 7.65556 7.72222 8.3 8.36667C8.94444 9.01111 9.73333 9.33333 10.6667 9.33333Z"/></svg>
+                                </span>
+                                <span class="score__name">Blue</span>
+                                <span class="score__value" id="end-score-blue">0</span>
+                            </span>
+                            <span class="score__chip score__chip--orange">
+                                <span class="player-icon player-icon--orange" aria-hidden="true">
+                                    <svg class="player-icon__glyph player-icon__glyph--flag" viewBox="0 0 24 20"><path fill="currentColor" d="M2.46154 20C1.78462 20 1.20513 19.7552 0.723077 19.2656C0.241026 18.776 0 18.1875 0 17.5V2.5C0 1.8125 0.241026 1.22396 0.723077 0.734375C1.20513 0.244792 1.78462 0 2.46154 0H16C16.3897 0 16.759 0.0885417 17.1077 0.265625C17.4564 0.442708 17.7436 0.6875 17.9692 1L23.5077 8.5C23.8359 8.9375 24 9.4375 24 10C24 10.5625 23.8359 11.0625 23.5077 11.5L17.9692 19C17.7436 19.3125 17.4564 19.5573 17.1077 19.7344C16.759 19.9115 16.3897 20 16 20H2.46154Z"/></svg>
+                                    <svg class="player-icon__glyph player-icon__glyph--pawn" viewBox="0 0 22 27"><path fill="currentColor" d="M2.66667 26.6667C1.93333 26.6667 1.30556 26.4056 0.783333 25.8833C0.261111 25.3611 0 24.7333 0 24V21.3667C0 20.9222 0.1 20.5111 0.3 20.1333C0.5 19.7556 0.766667 19.4333 1.1 19.1667C2.63333 17.9222 3.78333 16.6667 4.55 15.4C5.31667 14.1333 5.85556 13 6.16667 12H4C3.62222 12 3.30556 11.8722 3.05 11.6167C2.79444 11.3611 2.66667 11.0444 2.66667 10.6667C2.66667 10.2889 2.79444 9.97222 3.05 9.71667C3.30556 9.46111 3.62222 9.33333 4 9.33333H5.66667C5.35556 8.84444 5.11111 8.32222 4.93333 7.76667C4.75556 7.21111 4.66667 6.62222 4.66667 6C4.66667 4.33333 5.25 2.91667 6.41667 1.75C7.58333 0.583333 9 0 10.6667 0C12.3333 0 13.75 0.583333 14.9167 1.75C16.0833 2.91667 16.6667 4.33333 16.6667 6C16.6667 6.62222 16.5778 7.21111 16.4 7.76667C16.2222 8.32222 15.9778 8.84444 15.6667 9.33333H17.3333C17.7111 9.33333 18.0278 9.46111 18.2833 9.71667C18.5389 9.97222 18.6667 10.2889 18.6667 10.6667C18.6667 11.0444 18.5389 11.3611 18.2833 11.6167C18.0278 11.8722 17.7111 12 17.3333 12H15.1667C15.4778 13 16.0167 14.1333 16.7833 15.4C17.55 16.6667 18.7 17.9222 20.2333 19.1667C20.5667 19.4333 20.8333 19.7556 21.0333 20.1333C21.2333 20.5111 21.3333 20.9222 21.3333 21.3667V24C21.3333 24.7333 21.0722 25.3611 20.55 25.8833C20.0278 26.4056 19.4 26.6667 18.6667 26.6667H2.66667ZM2.66667 24H18.6667V21.3333C16.6222 19.7333 15.1444 18.0833 14.2333 16.3833C13.3222 14.6833 12.7111 13.2222 12.4 12H8.93333C8.62222 13.2222 8.01111 14.6833 7.1 16.3833C6.18889 18.0833 4.71111 19.7333 2.66667 21.3333V24ZM10.6667 9.33333C11.6 9.33333 12.3889 9.01111 13.0333 8.36667C13.6778 7.72222 14 6.93333 14 6C14 5.06667 13.6778 4.27778 13.0333 3.63333C12.3889 2.98889 11.6 2.66667 10.6667 2.66667C9.73333 2.66667 8.94444 2.98889 8.3 3.63333C7.65556 4.27778 7.33333 5.06667 7.33333 6C7.33333 6.93333 7.65556 7.72222 8.3 8.36667C8.94444 9.01111 9.73333 9.33333 10.6667 9.33333Z"/></svg>
+                                </span>
+                                <span class="score__name">Orange</span>
+                                <span class="score__value" id="end-score-orange">0</span>
+                            </span>
+                        </div>
+
+                        <button type="button" class="button button--end-cta" data-end-action="restart">
+                            <span class="end-screen__cta-label--code">Back to start</span>
+                            <span class="end-screen__cta-label--gaming">Home</span>
+                        </button>
+                    </div>
+
+                    <!-- Draw: equal points, regardless of color. -->
+                    <div class="end-screen__block end-screen__block--draw">
+                        <p class="end-screen__eyebrow">It's a</p>
+                        <h1 class="end-screen__title">DRAW</h1>
+
+                        <img class="end-screen__scale end-screen__scale--code" src="/assets/shared/draw.svg" alt="" aria-hidden="true">
+                        <img class="end-screen__scale end-screen__scale--gaming" src="/assets/shared/draw%20(3).svg" alt="" aria-hidden="true">
+
+                        <button type="button" class="button button--end-cta" data-end-action="restart">
+                            <span class="end-screen__cta-label--code">Back to start</span>
+                            <span class="end-screen__cta-label--gaming">Home</span>
                         </button>
                     </div>
                 </div>

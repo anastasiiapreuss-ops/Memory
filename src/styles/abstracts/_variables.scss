@@ -1,31 +1,31 @@
 // -----------------------------------------------------------------------------
-// Variablen / Design-Tokens
+// Variables / design tokens
 // -----------------------------------------------------------------------------
 
-// Farben ----------------------------------------------------------------------
-$color-page-bg:      #dcdcdc; // heller Seitenhintergrund (Rahmen um die Buehne)
-$color-stage-bg:     #2e2e2e; // dunkle Buehne (Flaeche des Homescreens)
-$color-text-on-dark: #ffffff; // Text auf der dunklen Buehne
-$color-accent:       #f0ea6e; // Gelb – Play-Button (Design-Token aus den Assets)
-$color-accent-ink:   #303131; // dunkle Schrift auf Gelb
-$color-gamepad:      #f0ea6e; // Farbe des dezenten Gamepad-Wasserzeichens
+// Colors ------------------------------------------------------------------
+$color-page-bg:      #dcdcdc; // light page background (frame around the stage)
+$color-stage-bg:     #2e2e2e; // dark stage (home screen surface)
+$color-text-on-dark: #ffffff; // text on the dark stage
+$color-accent:       #f0ea6e; // yellow – Play button (design token from the assets)
+$color-accent-ink:   #303131; // dark text on yellow
+$color-gamepad:      #f0ea6e; // color of the subtle gamepad watermark
 
-// Settings-Ansicht ----------------------------------------------------------
-$color-surface:       #ffffff; // helle Flaeche der Settings-Ansicht
-$color-ink:           #1f1f1f; // sehr dunkle Ueberschriften
-$color-muted:         #9a9a9a; // ausgegraute Sekundaertexte (Breadcrumb)
-$color-startbar-bg:   #efefef; // helle Leiste unter der Vorschau
+// Settings view --------------------------------------------------------------
+$color-surface:       #ffffff; // light surface of the settings view
+$color-ink:           #1f1f1f; // very dark headings
+$color-muted:         #9a9a9a; // muted secondary text (breadcrumb)
+$color-startbar-bg:   #efefef; // light bar under the preview
 $color-player-blue:   #2aa5e0;
 $color-player-orange: #e58a2e;
 
-// Typografie ----------------------------------------------------------------
-// System-Stack, moeglichst nah an der geometrischen Sans der Designvorlage.
+// Typography ------------------------------------------------------------------
+// System stack, as close as possible to the geometric sans from the design.
 $font-family-base:
     "Avenir Next", "Avenir", "Century Gothic", "Futura",
     "Segoe UI", "Helvetica Neue", "Arial", sans-serif;
 
-// Layout ------------------------------------------------------------------
+// Layout --------------------------------------------------------------------
 $stage-max-width: 70rem;
-$page-gutter:     2rem;   // Rahmen um die Buehne ab Tablet
-$page-gutter-sm:  1rem;   // Rahmen um die Buehne auf schmalen Screens
+$page-gutter:     2rem;   // frame around the stage from tablet up
+$page-gutter-sm:  1rem;   // frame around the stage on narrow screens
 $breakpoint-md:   48rem;  // ~768px

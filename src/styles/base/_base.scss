@@ -1,5 +1,5 @@
 // -----------------------------------------------------------------------------
-// Basis-Styles (globale Element-Regeln)
+// Base styles (global element rules)
 // -----------------------------------------------------------------------------
 
 @use "../abstracts" as *;
@@ -10,7 +10,7 @@
     box-sizing: border-box;
 }
 
-// [hidden] zuverlaessig durchsetzen (auch gegen display: flex o. Ae.)
+// Enforce [hidden] reliably (even against display: flex etc.).
 [hidden] {
     display: none !important;
 }

@@ -1,10 +1,10 @@
 // -----------------------------------------------------------------------------
-// Grosses Gamepad-Wasserzeichen unten links auf der Buehne.
-// Asset: public/assets/stadia_controller.svg – bringt seine eigene, sehr
-// geringe Deckkraft mit (deshalb hier kein zusaetzliches opacity).
-// Statisch, leicht nach links geneigt; nur ein kleines Stueck des linken
-// unteren Bereichs wird vom Buehnenrand abgeschnitten
-// (.stage { overflow: hidden }). Keine Animation.
+// Large gamepad watermark, bottom left on the stage.
+// Asset: public/assets/shared/stadia_controller.svg – already comes with its
+// own very low opacity (so no extra opacity is applied here).
+// Static, tilted slightly to the left; only a small part of the lower-left
+// area gets clipped at the stage edge (.stage { overflow: hidden }).
+// No animation.
 // -----------------------------------------------------------------------------
 
 @use "../abstracts" as *;
@@ -13,9 +13,9 @@
     position: absolute;
     left: -0.75rem;
     bottom: -1.5rem;
-    width: clamp(11rem, 26vw, 18rem);
+    width: clamp(15rem, 34vw, 26rem);
     height: auto;
-    transform: rotate(-5deg); // leichte Neigung nach links
+    transform: rotate(-5deg); // slight tilt to the left
     pointer-events: none;
     user-select: none;
 }

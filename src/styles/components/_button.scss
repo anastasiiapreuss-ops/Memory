@@ -9,7 +9,7 @@
     align-items: center;
     gap: 0.6rem;
     border: 0;
-    border-radius: 0; // keine sichtbare Rundung (siehe Designvorlage)
+    border-radius: 0; // no visible rounding (see design reference)
     font-family: inherit;
     font-weight: 700;
     line-height: 1;
@@ -21,7 +21,7 @@
     flex: none;
     display: block;
     width: auto;
-    height: 1.5em; // Proportion aus der Vorlage (nicht verzerren)
+    height: 1.5em; // proportion from the design reference (don't distort)
     transform-origin: center;
     transition: transform 0.15s ease;
 }
@@ -30,24 +30,24 @@
     flex: none;
     display: block;
     width: auto;
-    margin-left: -0.1rem; // Pfeil etwas näher an "Play" (wie in der Vorlage)
+    margin-left: -0.1rem; // arrow a bit closer to "Play" (as in the reference)
 }
 
-// Normalzustand: schlanker Pfeil (Vorlage: Property 1=Default (1).svg)
+// Default state: slim arrow (reference: Property 1=Default (1).svg)
 .button__arrow--thin {
     height: 0.7em;
 }
 
-// Hover: kräftigerer Pfeil (Vorlage: Property 1=hover.svg)
+// Hover: bolder arrow (reference: Property 1=hover.svg)
 .button__arrow--bold {
     display: none;
     height: 1.15em;
 }
 
-// Gelber Play-Button auf dem Homescreen.
-// Normalzustand exakt wie Property 1=Default (1).svg.
-// Hover (Property 1=hover.svg): Button leicht groesser, Gamepad leicht gedreht,
-// Pfeil kräftiger. Beim Verlassen kehrt alles zurueck.
+// Yellow Play button on the home screen.
+// Default state matches Property 1=Default (1).svg exactly.
+// Hover (Property 1=hover.svg): button slightly bigger, gamepad slightly
+// rotated, bolder arrow. Everything reverts on mouse-leave.
 .button--play {
     padding: 1.15rem 1.6rem;
     background-color: $color-accent;
@@ -74,15 +74,15 @@
     }
 
     &:active {
-        transform: scale(0.98); // kurzes Zurueckskalieren = Klickgefuehl
+        transform: scale(0.98); // brief scale-down = click feedback
         transition-duration: 0.06s;
     }
 }
 
-// Gelber Start-Button der Settings-Ansicht (Vorlage: small button.svg).
-// Normal: solides Gelb, dunkles Icon + "Start".
-// Hover: leicht groesser + Icon leicht gedreht.
-// Unvollstaendige Auswahl: grauer, deaktivierter Zustand.
+// Yellow Start button on the settings view (reference: small button.svg).
+// Normal: solid yellow, dark icon + "Start".
+// Hover: slightly bigger + icon slightly rotated.
+// Incomplete selection: grey, disabled state.
 .button--start {
     padding: 0.7rem 1.2rem;
     background-color: $color-accent;
@@ -96,16 +96,16 @@
         transform: scale(1.09);
 
         .button__icon {
-            transform: rotate(-5deg); // wie small button.svg (Hover)
+            transform: rotate(-5deg); // like small button.svg (hover)
         }
     }
 
     &:active {
-        transform: scale(0.98); // kurzes Zurueckskalieren = Klickgefuehl
+        transform: scale(0.98); // brief scale-down = click feedback
         transition-duration: 0.06s;
     }
 
-    // Unvollstaendige Auswahl (aria-disabled von main.ts) -> grau, kein Feedback.
+    // Incomplete selection (aria-disabled set by main.ts) -> grey, no feedback.
     &[aria-disabled="true"] {
         background-color: #dbdbd6;
         color: #a3a1a1;
@@ -123,15 +123,18 @@
     }
 }
 
-// "Exit game"-Button im Game-Header.
-// Standard = Code vibes: teal umrandeter Button, weisse Schrift + Icon, eckig
-// (Vorlage: secondary button.svg).
+// "Exit game" button in the game header.
+// Default = Code vibes: teal-outlined button, white text + icon, square
+// corners (reference: secondary button.svg).
 .button--exit {
     padding: 0.55rem 1rem;
     border: 1px solid #4dd5bc;
     background-color: rgba(134, 233, 214, 0.2);
     color: #ffffff;
-    font-size: 1.25rem; // Header deutlich groesser
+    // Scales down proportionally from 800px (its icon depends on
+    // .button__icon's height:1.5em); desktop size (1.25rem) stays
+    // unchanged up to 800px.
+    font-size: clamp(1rem, 0.8333rem + 0.833vw, 1.25rem);
     transition: background-color 0.15s ease, box-shadow 0.15s ease;
 
     &:hover,
@@ -140,14 +143,14 @@
     }
 }
 
-// Nur im Code-vibes-Header: beim Hover ein dezenter weisslicher Schatten.
+// Code-vibes header only: a subtle whitish shadow on hover.
 .game[data-theme="code-vibes"] .button--exit:hover,
 .game[data-theme="code-vibes"] .button--exit:focus-visible {
     box-shadow: 0 4px 10px rgba(230, 250, 245, 0.18);
 }
 
-// Gaming: pinker Umriss-Button, gerundet (Vorlage: game theme.svg).
-// Icon + Text standardmaessig weiss – das Tuer-Icon wird nur beim Hover rot.
+// Gaming: pink outline button, rounded (reference: game theme.svg).
+// Icon + text white by default – the door icon only turns red on hover.
 .game[data-theme="gaming"] .button--exit {
     border: 2px solid #e71c4f;
     border-radius: 9px;

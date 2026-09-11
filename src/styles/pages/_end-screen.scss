@@ -1,0 +1,325 @@
+// -----------------------------------------------------------------------------
+// End screen (Winner / Game over / Draw) – ONE layout per theme, the
+// content switches dynamically:
+//   - data-theme="code-vibes" | "gaming"   (look, set by main.ts)
+//   - data-result="win" | "lose" | "draw"  (which block is visible)
+//   - is-blue | is-orange                  (winner color = Player 1,
+//                                            the color chosen in the settings)
+// The screen ALWAYS shows from Player 1's perspective – on a loss there is
+// deliberately NO screen for the opponent (see the --lose block).
+// -----------------------------------------------------------------------------
+
+@use "../abstracts" as *;
+
+.end-screen {
+    position: relative;
+    z-index: 1;
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    padding: 2rem clamp(1rem, 4.5vw, 4rem);
+    color: $color-text-on-dark;
+    background-color: $color-stage-bg; // Code vibes: anthracite
+
+    &[data-theme="gaming"] {
+        background-color: #294f60; // petrol, like .game[data-theme="gaming"]
+    }
+}
+
+.end-screen__inner {
+    position: relative;
+    width: 100%;
+    max-width: 40rem;
+}
+
+.end-screen__block {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.9rem;
+}
+
+.end-screen[data-result="win"] .end-screen__block--win,
+.end-screen[data-result="lose"] .end-screen__block--lose,
+.end-screen[data-result="draw"] .end-screen__block--draw {
+    display: flex;
+}
+
+// Win block as a whole sits a bit higher than the vertical center.
+.end-screen__block--win {
+    margin-top: -6rem;
+}
+
+// Draw block for Code vibes likewise sits a bit higher (unchanged for Gaming).
+.end-screen[data-theme="code-vibes"] .end-screen__block--draw {
+    margin-top: -4rem;
+}
+
+.end-screen__eyebrow {
+    margin: 0;
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+// "The winner is" / "It's a" (Draw) the same size, a bit bigger than "Final score".
+.end-screen__block--win .end-screen__eyebrow,
+.end-screen__block--draw .end-screen__eyebrow {
+    font-size: 1.75rem;
+}
+
+// --- Title ("Game over" / "DRAW") ----------------------------------------
+// Code vibes: rich teal tone with a slight, dark offset shadow (as in the
+// screenshot). Gaming: pink, italic/narrow for the more angular look.
+.end-screen__title {
+    margin: 0;
+    // Lower bound kept deliberately low so "Game over" (white-space: nowrap)
+    // doesn't overflow the screen edge at 320px; the upper value (current
+    // desktop size) is unchanged.
+    font-size: clamp(2.5rem, 0.42rem + 10.4vw, 8rem);
+    font-weight: 800;
+    line-height: 1.1;
+    white-space: nowrap; // "Game over" always on one line
+    color: #4dd5bc;
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.35);
+}
+
+.end-screen[data-theme="gaming"] .end-screen__title {
+    color: #ed1b76;
+    font-style: italic;
+    letter-spacing: 0.02em;
+    text-shadow: none;
+    text-transform: uppercase;
+}
+
+// --- Winner name --------------------------------------------------------
+// Color comes from is-blue/is-orange on .end-screen (like .current-player-icon).
+.end-screen__player-name {
+    margin: 0;
+    // Lower bound kept deliberately low so "ORANGE PLAYER" (white-space:
+    // nowrap) doesn't overflow the screen edge at 320px; the upper value
+    // (current desktop size) is unchanged.
+    font-size: clamp(1.9rem, 0.71rem + 5.94vw, 4.6rem);
+    font-weight: 800;
+    white-space: nowrap; // "Orange Player" always on one line
+    text-transform: uppercase;
+}
+
+.end-screen[data-theme="gaming"] .end-screen__player-name {
+    font-style: italic;
+    text-transform: none; // Gaming: "Blue Player" instead of "BLUE PLAYER"
+}
+
+.end-screen.is-blue .end-screen__player-name {
+    color: $color-player-blue;
+}
+
+.end-screen.is-orange .end-screen__player-name {
+    color: $color-player-orange;
+}
+
+// Safety net for very narrow screens (~320px): if the font size is still
+// too tight for one line despite the adjustment above, wrap instead of
+// overflowing horizontally.
+@media (max-width: 22rem) {
+    .end-screen__title,
+    .end-screen__player-name {
+        white-space: normal;
+    }
+}
+
+// --- Confetti (both themes) -----------------------------------------------
+// Deliberately stretched in height (fixed height instead of auto) rather
+// than made bigger in width.
+.end-screen__confetti {
+    width: 100%;
+    max-width: 50rem;
+    height: 21rem;
+    object-fit: fill; // deliberately distorted/stretched in height, not cropped
+    margin-top: -3rem;
+    margin-bottom: -6rem; // pulls "The winner is" closer to the confetti
+}
+
+// --- Winner icon: player figure (Code vibes) vs. trophy (Gaming) ------------
+.end-screen__pawn {
+    display: inline-flex;
+    width: 8rem;
+    max-width: 100%; // shrinks along instead of overflowing on very narrow screens
+    height: auto;
+}
+
+.end-screen__pawn svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.end-screen.is-blue .end-screen__pawn {
+    color: $color-player-blue;
+}
+
+.end-screen.is-orange .end-screen__pawn {
+    color: $color-player-orange;
+}
+
+.end-screen__trophy {
+    display: none;
+    width: 9rem;
+    max-width: 100%;
+    height: auto;
+}
+
+.end-screen[data-theme="gaming"] {
+    .end-screen__pawn {
+        display: none;
+    }
+
+    .end-screen__trophy {
+        display: block;
+    }
+}
+
+// --- Scale (Draw) ------------------------------------------------------
+// Two pre-colored assets instead of a currentColor SVG: draw.svg (teal,
+// Code vibes) and draw (3).svg (pink, Gaming).
+.end-screen__scale {
+    width: 13rem;
+    max-width: 100%;
+    height: auto;
+}
+
+// A bit bigger for Code vibes.
+.end-screen__scale--code {
+    width: 18rem;
+    max-width: 100%;
+}
+
+.end-screen__scale--gaming {
+    display: none;
+}
+
+.end-screen[data-theme="gaming"] {
+    .end-screen__scale--code {
+        display: none;
+    }
+
+    .end-screen__scale--gaming {
+        display: block;
+    }
+}
+
+// --- Final score bar (game-over block only) -----------------------------
+// Self-contained copy of the .score look (see _game.scss), so the end
+// screen works independently of the existing game header.
+.end-screen__score {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.5rem 0.9rem;
+    border-radius: 8px;
+    font-size: 1.4rem;
+    font-weight: 700;
+    background-color: rgba(134, 233, 214, 0.2);
+}
+
+.end-screen__score .score__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.end-screen__score .score__chip--blue {
+    color: #2bb1ff;
+}
+
+.end-screen__score .score__chip--orange {
+    color: #f58e39;
+}
+
+.end-screen__score .player-icon__glyph {
+    display: block;
+    width: auto;
+    height: 1em;
+}
+
+.end-screen__score .player-icon__glyph--pawn {
+    display: none;
+}
+
+.end-screen[data-theme="gaming"] .end-screen__score {
+    border-radius: 10px;
+    background-color: #ffffff;
+    color: #303131;
+}
+
+.end-screen[data-theme="gaming"] .end-screen__score {
+    .score__chip--blue {
+        color: #097fc5;
+    }
+
+    .score__chip--orange {
+        color: #ea6900;
+    }
+
+    .score__name {
+        display: none;
+    }
+
+    .player-icon__glyph--flag {
+        display: none;
+    }
+
+    .player-icon__glyph--pawn {
+        display: block;
+    }
+}
+
+// --- CTA button ("Back to start" / "Home") --------------------------------
+.button--end-cta {
+    margin-top: 2rem;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid #4dd5bc;
+    background-color: rgba(134, 233, 214, 0.15);
+    color: #ffffff;
+    font-size: 1.25rem; // at least as big as .button--exit in the header
+    transition: background-color 0.15s ease;
+
+    &:hover,
+    &:focus-visible {
+        background-color: rgba(134, 233, 214, 0.28);
+    }
+}
+
+.end-screen__cta-label--gaming {
+    display: none;
+}
+
+.end-screen[data-theme="gaming"] {
+    .button--end-cta {
+        border: 2px solid #f2478d; // a bit lighter than the previous #e71c4f
+        border-radius: 9px;
+        background-color: rgba(237, 27, 118, 0.08);
+        transition:
+            background-color 0.15s ease,
+            border-width 0.15s ease,
+            box-shadow 0.15s ease;
+
+        &:hover,
+        &:focus-visible {
+            border-width: 3px;
+            background-color: rgba(237, 27, 118, 0.16);
+            box-shadow: 0 0 14px rgba(255, 105, 160, 0.5); // subtle pink glow
+        }
+    }
+
+    .end-screen__cta-label--code {
+        display: none;
+    }
+
+    .end-screen__cta-label--gaming {
+        display: inline;
+    }
+}

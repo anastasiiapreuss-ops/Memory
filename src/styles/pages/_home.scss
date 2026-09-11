@@ -1,15 +1,15 @@
 // -----------------------------------------------------------------------------
-// Homescreen
-// Textblock und Play-Button gemeinsam mittig auf der dunklen Buehne
-// (horizontal und vertikal zentriert). Innerhalb des Textblocks steht
-// "It's play time." linksbündig über "Ready to play?".
+// Home screen
+// Text block and Play button together centered on the dark stage
+// (horizontally and vertically). Inside the text block, "It's play time."
+// sits left-aligned above "Ready to play?".
 // -----------------------------------------------------------------------------
 
 @use "../abstracts" as *;
 
 .home {
     position: relative;
-    z-index: 1; // Inhalt liegt über dem Gamepad-Wasserzeichen
+    z-index: 1; // content sits above the gamepad watermark
     flex: 1 1 auto;
     display: flex;
     flex-direction: column;
@@ -21,7 +21,13 @@
 
 .home__heading {
     max-width: 100%;
-    text-align: left; // Kicker linksbündig an der Titel-Kante
+    text-align: left; // kicker left-aligned with the title's edge
+
+    // On narrow screens a left-aligned, potentially wrapped heading looks
+    // lopsided -> center it cleanly there instead of hugging an edge.
+    @media (max-width: 30rem) {
+        text-align: center;
+    }
 }
 
 .home__kicker {
@@ -32,12 +38,15 @@
 
 .home__title {
     margin: 0;
-    font-size: clamp(3rem, 2rem + 6vw, 6rem);
+    // Lower bound chosen so "Ready to play?" stays on one line at 320px
+    // as much as possible; the upper value (desktop size, reached at
+    // roughly 1067px) is unchanged.
+    font-size: clamp(2.25rem, 0.64rem + 8.03vw, 6rem);
     font-weight: 800;
     line-height: 1.05;
     letter-spacing: -0.01em;
 }
 
 .home__cta {
-    margin-top: 2.25rem;
+    margin-top: 3.25rem;
 }
