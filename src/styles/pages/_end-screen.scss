@@ -54,6 +54,12 @@
     margin-top: -6rem;
 }
 
+// Gaming has no confetti (see .end-screen__confetti below) -> the win
+// block sits even higher there to compensate for the missing image.
+.end-screen[data-theme="gaming"] .end-screen__block--win {
+    margin-top: -6rem;
+}
+
 // Draw block for Code vibes likewise sits a bit higher (unchanged for Gaming).
 .end-screen[data-theme="code-vibes"] .end-screen__block--draw {
     margin-top: -4rem;
@@ -131,7 +137,7 @@
     }
 }
 
-// --- Confetti (both themes) -----------------------------------------------
+// --- Confetti (Code vibes only) --------------------------------------------
 // Deliberately stretched in height (fixed height instead of auto) rather
 // than made bigger in width.
 .end-screen__confetti {
@@ -141,6 +147,11 @@
     object-fit: fill; // deliberately distorted/stretched in height, not cropped
     margin-top: -3rem;
     margin-bottom: -6rem; // pulls "The winner is" closer to the confetti
+}
+
+// Gaming doesn't use confetti.
+.end-screen[data-theme="gaming"] .end-screen__confetti {
+    display: none;
 }
 
 // --- Winner icon: player figure (Code vibes) vs. trophy (Gaming) ------------
