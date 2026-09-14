@@ -30,7 +30,6 @@
 
             <img class="gamepad-watermark" src="/assets/shared/stadia_controller.svg" alt="" aria-hidden="true">
 
-            <!-- Settings view (reference: screenshot 095919 – coding vibes) -->
             <section class="settings" hidden>
                 <div class="settings__inner">
                     <h1 class="settings__title">Settings</h1>
@@ -89,7 +88,6 @@
 
                         <div class="settings__preview">
                             <div class="preview-board">
-                                <!-- Code vibes theme (default) -->
                                 <div class="preview-board__bar preview-board__bar--code" aria-hidden="true">
                                     <span class="preview-hud__score">
                                         <span class="preview-hud__chip preview-hud__chip--blue"><span class="preview-hud__flag"></span>0</span>
@@ -101,7 +99,6 @@
                                     </span>
                                 </div>
                                 <img class="preview-board__cards preview-board__cards--code" src="/assets/shared/Frame%20631.svg" alt="" aria-hidden="true">
-                                <!-- Gaming theme -->
                                 <img class="preview-board__bar preview-board__bar--gaming" src="/assets/shared/Frame%20610%20(2).svg" alt="" aria-hidden="true">
                                 <img class="preview-board__cards preview-board__cards--gaming" src="/assets/shared/Frame%20627.svg" alt="" aria-hidden="true">
                             </div>
@@ -127,8 +124,6 @@
                 </div>
             </section>
 
-            <!-- Game screen: static board layout + header. Theme / player /
-                 board size are set via data attribute by main.ts. -->
             <section class="game" hidden>
                 <div class="game__inner">
                     <header class="game-bar">
@@ -168,9 +163,6 @@
                     <div class="board" id="board"></div>
                 </div>
 
-                <!-- Quit/exit popup: image depends on data-theme (Code vibes ->
-                     Pop up_01.svg, Gaming -> Pop up_02.svg). The buttons drawn in
-                     the image get transparent, clickable areas overlaid. -->
                 <div class="quit-popup" id="quit-popup" hidden>
                     <div class="quit-popup__dialog">
                         <img class="quit-popup__art quit-popup__art--code" src="/assets/shared/Pop%20up_01.svg" alt="Are you sure you want to quit the game?">
@@ -187,14 +179,8 @@
                 </div>
             </section>
 
-            <!-- End screen: ONE layout per theme, content switches dynamically via
-                 data-result ("win" | "lose" | "draw", set by main.ts), winner
-                 color via is-blue/is-orange. Always shows from Player 1's
-                 perspective (the color chosen in the settings) - the opponent
-                 never gets their own screen on a win. -->
             <section class="end-screen" hidden>
                 <div class="end-screen__inner">
-                    <!-- Win: Player 1 has more points than the opponent. -->
                     <div class="end-screen__block end-screen__block--win">
                         <img class="end-screen__confetti" src="/assets/shared/Confetti.svg" alt="" aria-hidden="true">
 
@@ -215,8 +201,6 @@
                         </button>
                     </div>
 
-                    <!-- Loss: Player 1 has fewer points than the opponent.
-                         There is deliberately NO screen for the opponent. -->
                     <div class="end-screen__block end-screen__block--lose">
                         <h1 class="end-screen__title">Game over</h1>
 
@@ -246,7 +230,6 @@
                         </button>
                     </div>
 
-                    <!-- Draw: equal points, regardless of color. -->
                     <div class="end-screen__block end-screen__block--draw">
                         <p class="end-screen__eyebrow">It's a</p>
                         <h1 class="end-screen__title">DRAW</h1>

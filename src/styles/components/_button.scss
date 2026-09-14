@@ -49,12 +49,16 @@
 // Hover (Property 1=hover.svg): button slightly bigger, gamepad slightly
 // rotated, bolder arrow. Everything reverts on mouse-leave.
 .button--play {
-    padding: 1.15rem 1.6rem;
+    padding: 1.25rem 1.8rem;
     background-color: $color-accent;
     color: $color-accent-ink;
-    font-size: 1.125rem;
+    font-size: 2.1rem;
     transform-origin: center;
     transition: transform 0.15s ease;
+
+    .button__icon {
+        height: 0.85em; // smaller than the default 1.5em, play button only
+    }
 
     &:hover,
     &:focus-visible {

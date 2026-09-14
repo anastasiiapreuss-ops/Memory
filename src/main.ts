@@ -520,17 +520,6 @@ function handleBoardClick(event: MouseEvent): void {
 
 board?.addEventListener('click', handleBoardClick);
 
-/**
- * Logs the chosen game configuration to the console for debugging.
- * @param config - The game configuration to log.
- */
-function logGameConfig(config: GameConfig): void {
-  console.log('Theme:', config.theme);
-  console.log('Player color:', config.playerColor);
-  console.log('Board size:', config.boardSize);
-  console.log('Game config:', config);
-}
-
 /** Reads the settings selection and starts the game once it's complete. */
 function handleStartClick(): void {
   const theme = readSelectedTheme();
@@ -539,7 +528,6 @@ function handleStartClick(): void {
   if (theme === null || playerColor === null || boardSize === null) return;
 
   currentGameConfig = { theme, playerColor, boardSize };
-  logGameConfig(currentGameConfig);
   startGame(currentGameConfig);
 }
 
